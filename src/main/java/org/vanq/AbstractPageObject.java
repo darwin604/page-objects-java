@@ -1,6 +1,5 @@
 package org.vanq;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -21,11 +20,8 @@ public abstract class AbstractPageObject {
         waitForPageToLoad();
     }
 
-    // Locators
-    By pageNameLocator = By.tagName("h2");
-
     // Each page object will implement this method to return its expected page name.
-    public abstract String getExpectedPageName();
+    public abstract String getExpectedPageTitle();
 
     // Wait until the page name of the current page matches our expected value else fail the test if the wait times out.
     public void waitForPageToLoad() {
@@ -33,8 +29,8 @@ public abstract class AbstractPageObject {
             wait.until(new ExpectedCondition<Boolean>() {
                 @Override
                 public Boolean apply(WebDriver d) {
-                    String actualPageName = driver.findElement(pageNameLocator).getText();
-                    return actualPageName.equals(getExpectedPageName());
+                    String actualPageTitle = driver.getTitle();
+                    return actualPageTitle.equals(getExpectedPageTitle());
                 }
             });
         } catch (TimeoutException e) {

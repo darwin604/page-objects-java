@@ -9,8 +9,8 @@ public class Mission extends AbstractBasePage {
     }
 
     @Override
-    public String getExpectedPageName() {
-        return "VANQ's Mission Statement";
+    public String getExpectedPageTitle() {
+        return "VanQ's Mission Statement";
     }
 
 }

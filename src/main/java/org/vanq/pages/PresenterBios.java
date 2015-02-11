@@ -12,7 +12,7 @@ public class PresenterBios extends AbstractBasePage {
     }
 
     @Override
-    public String getExpectedPageName() {
+    public String getExpectedPageTitle() {
         return "Who's Who of VANQ Presenters";
     }
 

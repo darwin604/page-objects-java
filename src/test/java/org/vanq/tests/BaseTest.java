@@ -66,15 +66,19 @@ public class BaseTest {
     // Sets up a Remote WebDriver session, requires Selenium Server to be running on SELENIUM_HOST : SELENIUM_PORT
     private void setupRemoteWebDriver() throws MalformedURLException {
         DesiredCapabilities capabilities;
-        if (BROWSER.equals("firefox")) {
-            capabilities = DesiredCapabilities.firefox();
-        } else if (BROWSER.equals("internetExplorer")) {
-            capabilities = DesiredCapabilities.internetExplorer();
-            capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
-        } else if (BROWSER.equals("chrome")) {
-            capabilities = DesiredCapabilities.chrome();
-        } else {
-            throw new RuntimeException("Browser type unsupported:" + BROWSER);
+        switch (BROWSER) {
+            case "firefox":
+                capabilities = DesiredCapabilities.firefox();
+                break;
+            case "internetExplorer":
+                capabilities = DesiredCapabilities.internetExplorer();
+                capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
+                break;
+            case "chrome":
+                capabilities = DesiredCapabilities.chrome();
+                break;
+            default:
+                throw new RuntimeException("Browser type unsupported:" + BROWSER);
         }
         driver = new RemoteWebDriver(
                 new URL("http://" + SELENIUM_HOST + ":" + SELENIUM_PORT + "/wd/hub"),
@@ -84,21 +88,25 @@ public class BaseTest {
     // Sets up local WebDriver session, does not require Selenium Server
     private void setupLocalWebDriver() {
         DesiredCapabilities capabilities;
-        if (BROWSER.equals("firefox")) {
-            driver = new FirefoxDriver();
-        } else if (BROWSER.equals("internetExplorer")) {
-            capabilities = DesiredCapabilities.internetExplorer();
-            capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
-            driver = new InternetExplorerDriver(capabilities);
-        } else if (BROWSER.equals("chrome")) {
-            String chromeDriverPath = "lib/chromedriver";
-            if (System.getProperty("os.name").contains("Windows")) {
-                chromeDriverPath = "lib/chromedriver.exe";
-            }
-            System.setProperty("webdriver.chrome.driver", chromeDriverPath);
-            driver = new ChromeDriver();
-        } else {
-            throw new RuntimeException("Browser type unsupported" + BROWSER);
+        switch (BROWSER) {
+            case "firefox":
+                driver = new FirefoxDriver();
+                break;
+            case "internetExplorer":
+                capabilities = DesiredCapabilities.internetExplorer();
+                capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
+                driver = new InternetExplorerDriver(capabilities);
+                break;
+            case "chrome":
+                String chromeDriverPath = "lib/chromedriver";
+                if (System.getProperty("os.name").contains("Windows")) {
+                    chromeDriverPath = "lib/chromedriver.exe";
+                }
+                System.setProperty("webdriver.chrome.driver", chromeDriverPath);
+                driver = new ChromeDriver();
+                break;
+            default:
+                throw new RuntimeException("Browser type unsupported" + BROWSER);
         }
     }
 

@@ -9,7 +9,7 @@ public class Sponsors extends AbstractBasePage {
     }
 
     @Override
-    public String getExpectedPageName() {
+    public String getExpectedPageTitle() {
         return "VANQ Sponsors";
     }
 }

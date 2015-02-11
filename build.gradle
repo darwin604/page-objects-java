@@ -38,5 +38,3 @@ task excludeContentGroup(type: Test) {
         excludeGroups 'content'
     }
 }
-
-

@@ -9,7 +9,7 @@ public class TrevorAtkinsBio extends AbstractBioPage {
     }
 
     @Override
-    public String getExpectedPageName() {
+    public String getExpectedPageTitle() {
         return "Trevor Atkins";
     }
 

@@ -4,7 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.vanq.pages.Home;
 
-public class HeaderTest extends BaseTest {
+public class LogoTest extends BaseTest {
 
     @Test(groups = {"functional"})
     public void vanqLogoDisplayedOnHomePageTest() {

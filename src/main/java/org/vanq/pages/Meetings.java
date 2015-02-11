@@ -14,8 +14,8 @@ public class Meetings extends AbstractBasePage {
     }
 
     @Override
-    public String getExpectedPageName() {
-        return "Past Meetings and Materials";
+    public String getExpectedPageTitle() {
+        return "VanQ Past Meetings and Materials";
     }
 
     // Locators

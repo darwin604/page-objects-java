@@ -11,14 +11,14 @@ public class Home extends AbstractBasePage {
     }
 
     @Override
-    public String getExpectedPageName() {
-        return "Welcome to VANQ.org";
+    public String getExpectedPageTitle() {
+        return "VanQ - Vancouver Testing and Quality Assurance Group";
     }
 
     // Locators
     By presenterBiosLocator = By.linkText("Presenter Bios");
 
-    // Public methods for page object
+    // Public methods for page object (this link no loger exists)
 
     public PresenterBios clickPresenterBios() {
         WebElement presenterBios = driver.findElement(presenterBiosLocator);
