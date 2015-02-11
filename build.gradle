@@ -7,23 +7,33 @@ repositories {
 }
 
 dependencies {
-    compile "org.seleniumhq.selenium:selenium-java:2.24.1"
-    compile "org.testng:testng:6.3.1"
+    compile "org.seleniumhq.selenium:selenium-java:2.43.1"
+    compile "org.testng:testng:6.8.8"
 }
 
 tasks.withType(Test) {
-    useTestNG()
+    maxParallelForks = 1
+    ignoreFailures = false
     systemProperties = System.getProperties()
-    maxParallelForks = 2
 }
 
 task includeSmokeGroup(type: Test) {
+    testLogging.events "started"
+    testLogging {
+        events "started", "passed", "skipped", "failed", "standardOut", "standardError"
+        exceptionFormat "full"
+    }
     useTestNG() {
         includeGroups 'smoke'
     }
 }
 
 task excludeContentGroup(type: Test) {
+    testLogging.events "started"
+    testLogging {
+        events "started", "passed", "skipped", "failed", "standardOut", "standardError"
+        exceptionFormat "full"
+    }
     useTestNG() {
         excludeGroups 'content'
     }
