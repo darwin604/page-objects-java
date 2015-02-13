@@ -14,7 +14,7 @@ There are a couple of key concepts demonstrated in this project that will help y
 Clone the GitHub repo
 ---------------------
 
-git clone git@github.com:iainrose/vanq-java.git
+git clone git@github.com:darwin604/vanq-java.git
 
 Creating the IDE project
 ------------------------
@@ -89,8 +89,3 @@ To run tests in Chrome
 
 To run tests in IE
 gradle.bat clean test -DBROWSER=internetExplorer
-
-
-
-All and any feedback welcome and appreciated, I'm still learning too.
-@iainrose
